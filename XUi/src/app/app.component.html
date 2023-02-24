@@ -1,0 +1,34 @@
+<mat-toolbar color="primary">
+  <span>Weather Forecast</span>
+  <!-- <button mat-button routerLink="/home">Home</button>
+  <button mat-button routerLink="/about">About</button> -->
+</mat-toolbar>
+
+<main>
+  <div class="container">
+    <mat-form-field appearance="fill">
+      <mat-label>Country</mat-label>
+      <mat-select [(ngModel)]="selectedCountryId" (selectionChange)="onCountrySelected()">
+        <mat-option *ngFor="let country of countries" [value]="country.id">
+          {{ country.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>City</mat-label>
+      <mat-select [(ngModel)]="selectedCity" (selectionChange)="onCitySelected()">
+        <mat-option *ngFor="let city of cities" [value]="city.name">
+          {{ city.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <weather-info *ngIf="selectedCity && weatherData.location" [weatherResponse]="weatherData"></weather-info>
+
+  </div>
+</main>
+
+<footer>
+  <!-- Add your footer content here -->
+</footer>
